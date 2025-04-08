@@ -1,89 +1,380 @@
-<!DOCTYPE html>
-<html>
-  <head>
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>Welcome to Firebase Hosting</title>
 
-    <!-- update the version number as needed -->
-    <script defer src="/__/firebase/11.6.0/firebase-app-compat.js"></script>
-    <!-- include only the Firebase features as you need -->
-    <script defer src="/__/firebase/11.6.0/firebase-auth-compat.js"></script>
-    <script defer src="/__/firebase/11.6.0/firebase-database-compat.js"></script>
-    <script defer src="/__/firebase/11.6.0/firebase-firestore-compat.js"></script>
-    <script defer src="/__/firebase/11.6.0/firebase-functions-compat.js"></script>
-    <script defer src="/__/firebase/11.6.0/firebase-messaging-compat.js"></script>
-    <script defer src="/__/firebase/11.6.0/firebase-storage-compat.js"></script>
-    <script defer src="/__/firebase/11.6.0/firebase-analytics-compat.js"></script>
-    <script defer src="/__/firebase/11.6.0/firebase-remote-config-compat.js"></script>
-    <script defer src="/__/firebase/11.6.0/firebase-performance-compat.js"></script>
-    <!-- 
-      initialize the SDK after all desired features are loaded, set useEmulator to false
-      to avoid connecting the SDK to running emulators.
-    -->
-    <script defer src="/__/firebase/init.js?useEmulator=true"></script>
+<!doctype html>
+<html lang="en">
 
-    <style media="screen">
-      body { background: #ECEFF1; color: rgba(0,0,0,0.87); font-family: Roboto, Helvetica, Arial, sans-serif; margin: 0; padding: 0; }
-      #message { background: white; max-width: 360px; margin: 100px auto 16px; padding: 32px 24px; border-radius: 3px; }
-      #message h2 { color: #ffa100; font-weight: bold; font-size: 16px; margin: 0 0 8px; }
-      #message h1 { font-size: 22px; font-weight: 300; color: rgba(0,0,0,0.6); margin: 0 0 16px;}
-      #message p { line-height: 140%; margin: 16px 0 24px; font-size: 14px; }
-      #message a { display: block; text-align: center; background: #039be5; text-transform: uppercase; text-decoration: none; color: white; padding: 16px; border-radius: 4px; }
-      #message, #message a { box-shadow: 0 1px 3px rgba(0,0,0,0.12), 0 1px 2px rgba(0,0,0,0.24); }
-      #load { color: rgba(0,0,0,0.4); text-align: center; font-size: 13px; }
-      @media (max-width: 600px) {
-        body, #message { margin-top: 0; background: white; box-shadow: none; }
-        body { border-top: 16px solid #ffa100; }
-      }
-    </style>
-  </head>
-  <body>
-    <div id="message">
-      <h2>Welcome</h2>
-      <h1>Firebase Hosting Setup Complete</h1>
-      <p>You're seeing this because you've successfully setup Firebase Hosting. Now it's time to go build something extraordinary!</p>
-      <a target="_blank" href="https://firebase.google.com/docs/hosting/">Open Hosting Documentation</a>
+<head>
+  <title>Double P Concept</title>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+  <link href="https://fonts.googleapis.com/css?family=Raleway:400,700&display=swap" rel="stylesheet">
+  <link
+    rel="stylesheet"
+    href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css"
+  />
+  
+  <!-- Theme Style -->"
+  <link rel="stylesheet" href="../css/style.css">
+
+</head>
+
+<body>
+
+  <header role="banner">
+    <nav class="navbar navbar-expand-lg  bg-dark">
+      <div class="container-fluid">
+        <a class="navbar-brand " href="index.html">Douple P</a>
+
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarsExample05"
+          aria-controls="navbarsExample05" aria-expanded="false" aria-label="Toggle navigation">
+          <span class="navbar-toggler-icon"></span>
+        </button>
+
+   
+        <div class="collapse navbar-collapse" id="navbarsExample05">
+          <ul class="navbar-nav pl-md-5 ml-auto">
+            <li class="nav-item">
+              <a class="nav-link active" href="index.html">Home</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="about.html">About</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="portfolio.html">Resources</a>
+            </li>
+          </ul>
+
+          <div class="navbar-nav ml-auto">
+            <a href="contact.html">Contact us</a>
+          </div>
+
+        </div>
+      </div>
+    </nav>
+  </header>
+  <!-- END header -->
+
+  <div class="slider-item overlay" data-stellar-background-ratio="0.5"
+    style="background-image: url('images/hero_img.webp');">
+    <div class="container">
+      <div class="row slider-text align-items-center justify-content-center">
+        <div class="col-lg-9 text-center col-sm-12">
+          <h1 class="mb-4">We <span class= "auto-type"></span></h1>
+        </div>
+      </div>
     </div>
-    <p id="load">Firebase SDK Loading&hellip;</p>
+  </div>
 
-    <script>
-      document.addEventListener('DOMContentLoaded', function() {
-        const loadEl = document.querySelector('#load');
-        // // 🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥
-        // // The Firebase SDK is initialized and available here!
-        //
-        // firebase.auth().onAuthStateChanged(user => { });
-        // firebase.database().ref('/path/to/ref').on('value', snapshot => { });
-        // firebase.firestore().doc('/foo/bar').get().then(() => { });
-        // firebase.functions().httpsCallable('yourFunction')().then(() => { });
-        // firebase.messaging().requestPermission().then(() => { });
-        // firebase.storage().ref('/path/to/ref').getDownloadURL().then(() => { });
-        // firebase.analytics(); // call to activate
-        // firebase.analytics().logEvent('tutorial_completed');
-        // firebase.performance(); // call to activate
-        //
-        // // 🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥
+  
+  <!-- ----------------------------------------------------------------------ABOUT US----------------------------------------------------------- -->
+  <div class="section">
+    <div class="container">
+      <div class="row">
+        <div class="col-lg-5 mr-auto mb-5">
+          <span class="d-block text-uppercase text-secondary">Who We Are</span>
+          <span class="divider my-4"></span>
+          <h2 class="mb-4 section-title">We Are a <strong>Tech Agency</strong> That Bring Your Ideas Alive</h2>
+          <p>At Double P Concept, we are passionate about leveraging technology to build innovative and scalable solutions. Our team specializes in web development, software maintenance, and IT solutions, ensuring that businesses stay ahead in the digital landscape. 
+            <br> 
+          </p>
+          <p class="mb-5">At Double P Concept, we don’t just build technology—we craft digital experiences.</p>
+          <p><a href="about.html" class="btn btn-outline-black">Learn More</a></p>
+        </div>
+        <div class="col-lg-6 h-">
+          <figure class="img-dotted-bg">
+            <img src="images/about-img.jpg" alt="Image" class="img-fluid">
+          </figure>
+        </div>
+      </div>
+    </div>
+  </div>
 
-        try {
-          let app = firebase.app();
-          let features = [
-            'auth', 
-            'database', 
-            'firestore',
-            'functions',
-            'messaging', 
-            'storage', 
-            'analytics', 
-            'remoteConfig',
-            'performance',
-          ].filter(feature => typeof app[feature] === 'function');
-          loadEl.textContent = `Firebase SDK loaded with ${features.join(', ')}`;
-        } catch (e) {
-          console.error(e);
-          loadEl.textContent = 'Error loading the Firebase SDK, check the console.';
-        }
-      });
-    </script>
-  </body>
+    <!-- ----------------------------------------------------------RESULTS--------------------------------------------------- -->
+  <div class="section portfolio-section">
+    <div class="container">
+     <div class="row">
+        <div class="col-lg-3 text-center">
+          <img src="./images/satisfied-customers.png" alt="">
+          <h1>20+</h1>
+          <p>Satisfied Clients</p>
+        </div>
+        <div class="col-lg-3 text-center">
+          <img src="./images/projects-completed.png" alt="">
+          <h1>40+</h1>
+          <p>Completed Projects</p>
+        </div>
+        <div class="col-lg-3 text-center">
+          <img src="./images/experience.png" alt="">
+          <h1>3+</h1>
+          <p>Years of Experience</p>
+        </div>
+        <div class="col-lg-3 text-center">
+          <img src="./images/24-7.png" alt="">
+          <h1>24/7</h1>
+          <p>Customer Support</p>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="section">
+    <div class="container">
+      <div class="row">
+        <div class="col-lg-5 mr-auto mb-3">
+          <span class="d-block text-uppercase text-secondary">Featured Services</span>
+          <span class="divider my-4"></span>
+          <h2 class="mb-4 section-title">The <strong>Services</strong> That We Are Providing</h2>
+          <p>At Double P Concept, we offer cutting-edge technology solutions tailored to meet your business needs. 
+            Whether you're looking for a sleek website, a custom software solution, or IT support, we have the expertise to bring your vision to life.</p>
+          <p class="mb-5">Explore our services and discover how we can take your business to the next level.</p>
+          
+        </div>
+        <div class="col-lg-6">
+          <div class="row mt-5">
+            <div class="col-lg-6 col-md-6 mb-4">
+              <div class="service">
+                <div class="mb-4 icon">
+                  <img src="images/branding.png" alt="" >  
+                </div>
+                <h3>Branding</h3>
+                <p>Your brand is more than just a logo, it’s your identity. We create powerful visuals and strategies that make your brand unforgettable.</p>
+              </div>
+            </div>
+            <div class="col-lg-6 col-md-6 mb-4">
+              <div class="service">
+                <div class="mb-4 icon">
+                  <img src="images/coding.png" alt="" >  
+                </div>
+                <h3>Web Design</h3>
+                <p>Your website is more than just pages, it’s your digital presence. We design sleek, user-friendly sites that leave a lasting impression.</p>
+              </div>
+            </div>
+
+            <div class="col-lg-6 col-md-6 mb-4">
+              <div class="service">
+                <div class="mb-4 icon">
+                  <img src="images/mobile-development.png" alt="" >  
+                </div>
+                <h3>App Design</h3>
+                <p>Your app is more than just a product, it’s a solution. We design seamless, user-friendly apps that drive engagement and growth.</p>
+              </div>
+            </div>
+            <div class="col-lg-6 col-md-6 mb-4">
+              <div class="service">
+                <div class="mb-4 icon">
+                  <img src="images/training.png" alt="" >  
+                </div>
+                <h3>IT Training</h3>
+                <p>Your skills are more than just knowledge, they’re your advantage. We offer expert IT training to keep you ahead in the tech world.</p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  
+
+  <div class="section block-11">
+    <div class="container">
+      <div class="row justify-content-center mb-5">
+        <div class="col-md-8 text-center">
+          <h2 class="mb-4 section-title">Testimonial</h2>
+        </div>
+      </div>
+      <div class="swiper mySwiper">
+        <div class="swiper-wrapper">
+          <div class="swiper-slide testimonial">
+            <div class="h-100 profile">
+              <div class="mb-3">
+                <div class="image align-self-center"><img src="images/man-1.jpg" alt="Person here"></div>
+              </div>
+              <div class="text">
+                <blockquote>
+                  <p>&rdquo; Double P Concept transformed our logistics business with a sleek, user-friendly website. 
+                    Our customers can now track their shipments effortlessly, and our online presence has never been stronger. Highly recommended! &ldquo;</p>
+                </blockquote>
+                <div class="name-text align-self-center mb-5">
+                  <p class="">Henry Okafor<br /><span>Swifts Logistics</span></p>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div class="swiper-slide testimonial">
+            <div class="h-100 profile">
+              <div class="mb-3">
+                <div class="image align-self-center"><img src="images/woman-1.jpg" alt="Person here"></div>
+              </div>
+              <div class="text">
+                <blockquote>
+                  <p>&rdquo; The team at Double P Concept brought our fashion brand to life with a stunning e-commerce website. 
+                    The design is elegant, and the functionality is top-notch. Sales have increased significantly since the launch! &ldquo;</p>
+                </blockquote>
+                <div class="name-text align-self-center mb-5">
+                  <p class="display-5">Sarah Ogu<br /> Bloom Fashion House </p>
+                  <!-- <>XYZ Inc. Client</span> -->
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div class="swiper-slide testimonial">
+            <div class="h-100 profile">
+              <div class="mb-3">
+                <div class="image align-self-center"><img src="images/man-2.jpg" alt="Person here"></div>
+              </div>
+              <div class="text">
+                <blockquote>
+                  <p>&rdquo; As a tech company, we needed a website that reflected innovation and professionalism. 
+                    Double P Concept designed a cutting-edge site that perfectly represents our brand. Their attention to detail and expertise are unmatched! &ldquo;</p>
+                </blockquote>
+                <div class="name-text align-self-center mb-5">
+                  <p class="display-5">Olushola Michael<br /> TechSphere Solutions</p>
+                  <!-- <>XYZ Inc. Client</span> -->
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div class="swiper-slide testimonial">
+            <div class="h-100 profile">
+              <div class="mb-3">
+                <div class="image align-self-center"><img src="images/woman-2.jpg" alt="Person here"></div>
+              </div>
+              <div class="text">
+                <blockquote>
+                  <p>&rdquo; We needed a website that made online food ordering easy for our customers. 
+                    Double P Concept delivered beyond our expectations with a fast, mobile-friendly site that boosted our daily orders. Exceptional service! &ldquo;</p>
+                </blockquote>
+                <div class="name-text align-self-center mb-5">
+                  <p class="display-5">Jane Daniels<br /> Fresh Bites Restaurant</p>
+                  <!-- <>XYZ Inc. Client</span> -->
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="swiper-pagination"></div>
+
+      </div>
+      
+    </div>
+  </div>
+  <!-- END .block-4 -->
+  </div>
+
+  <div class="section resources">
+    <div class="container">
+      <h2>Resources</h2>
+      <div class="blog-container row" id="blogList">
+        <!-- <div cla></div> -->
+      </div>  
+    </div>
+    
+  </div>
+
+  <div class="contact py-5">
+    <div class="container text-center">
+      <div class="row justify-content-center">
+        <div class="col-lg-7">
+          <h3 class="text-white mb-4 font-weight-normal">Do You Have An Awesome Project In Mind?</h3>
+          <p class="text-white mb-5">Lorem ipsum dolor sit amet consectetur adipisicing elit. Ab dolorem voluptas
+            soluta quo, odio
+            quaerat.</p>
+            
+          <p class="mb-0"><a href="contact.html" class="btn btn-outline-white px-4 py-3">Get In Touch!</a></p>
+        </div>
+      </div>
+
+    </div>
+  </div>
+
+  
+
+  <footer class="site-footer" role="contentinfo">
+    <div class="container">
+      <div class="row mb-5">
+        <div class="col-md-4 mb-5">
+          <h3 class="mb-4">About Double P Concept</h3>
+          <p class="mb-5">At Double P Concept, we are passionate about leveraging technology to build innovative and scalable solutions, 
+            ensuring that businesses stay ahead in the digital landscape.</p>
+          <ul class="list-unstyled footer-link d-flex footer-social">
+            <li><a href="#" class="p-2"><span class="fa fa-twitter"></span></a></li>
+            <li><a href="#" class="p-2"><span class="fa fa-facebook"></span></a></li>
+            <li><a href="#" class="p-2"><span class="fa fa-linkedin"></span></a></li>
+            <li><a href="#" class="p-2"><span class="fa fa-instagram"></span></a></li>
+          </ul>
+
+        </div>
+        <div class="col-md-5 mb-5 pl-md-5">
+          <div class="mb-5">
+            <h3 class="mb-4">Contact Info</h3>
+            <ul class="list-unstyled footer-link">
+              <li class="d-block">
+                <span class="d-block">Address:</span>
+                <span class="text-white">34 Street Name, City Name Here, United States</span>
+              </li>
+              <li class="d-block">
+                <span class="d-block">Telephone:</span><span class="text-white">+1 242 4942 290</span>
+              </li>
+              <li class="d-block">
+                <span class="d-block">Email:</span><span class="text-white"><a href="/cdn-cgi/l/email-protection" class="__cf_email__" data-cfemail="cea7a0a8a18eb7a1bbbcaaa1a3afa7a0e0ada1a3">[email&#160;protected]</a></span>
+              </li>
+            </ul>
+          </div>
+
+          
+        </div>
+        <div class="col-md-3 mb-5">
+          <h3 class="mb-4">Quick Links</h3>
+          <ul class="list-unstyled footer-link">
+            <li><a href="#">About</a></li>
+            <li><a href="#">Terms of Use</a></li>
+            <li><a href="#">Disclaimers</a></li>
+            <li><a href="#">Contact</a></li>
+          </ul>
+        </div>
+        <div class="col-md-3">
+
+        </div>
+      </div>
+      <div class="row">
+        <div class="col-12 text-md-center text-left">
+          <p>
+            <!-- Link back to Colorlib can't be removed. Template is licensed under CC BY 3.0. -->
+            Copyright &copy;
+            <script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script><script>document.write(new Date().getFullYear());</script> All Rights Reserved
+          </p>
+        </div>
+      </div>
+    </div>
+  </footer>
+  <!-- END footer -->
+
+  <!-- loader -->
+  <!-- <div id="loader" class="show fullscreen"><svg class="circular" width="48px" height="48px">
+      <circle class="path-bg" cx="24" cy="24" r="22" fill="none" stroke-width="4" stroke="#eeeeee" />
+      <circle class="path" cx="24" cy="24" r="22" fill="none" stroke-width="4" stroke-miterlimit="10"
+        stroke="#f4b214" /></svg></div> -->
+
+<!-- Global site tag (gtag.js) - Google Analytics -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=UA-23581568-13"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'UA-23581568-13');
+</script>
+
+<script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
+
+<script src="../index.js"></script>
+<script src="../blogs.js"></script>
+
+<!-- <script defer src="https://static.cloudflareinsights.com/beacon.min.js/vcd15cbe7772f49c399c6a5babf22c1241717689176015" integrity="sha512-ZpsOmlRQV6y907TI0dKBHq9Md29nnaEIPlkf84rnaERnq6zvWvPUqr2ft8M1aS28oN72PdrCzSjY4U6VaAw1EQ==" data-cf-beacon='{"rayId":"9261eb423c076936","serverTiming":{"name":{"cfExtPri":true,"cfL4":true,"cfSpeedBrain":true,"cfCacheStatus":true}},"version":"2025.3.0","token":"cd0b4b3a733644fc843ef0b185f98241"}' crossorigin="anonymous"></script> -->
+<script defer src="https://unpkg.com/typed.js@2.1.0/dist/typed.umd.js"></script>
+</body>
+
 </html>
