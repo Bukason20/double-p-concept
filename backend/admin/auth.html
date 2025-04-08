@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <link rel="stylesheet" href="../../css/admin.css">
+</head>
+<body>
+  <div id="auth-section" class="form-container">
+    <p id="auth-message"></p>
+
+    <div id="admin-auth" class="form-content">
+      <div class="form-head">
+        <h1>Hello Admin</h1>
+        <p>Input the Admin Credentials</p>  
+      </div>
+      
+      <div class="form-body">
+        <input type="text" id="admin-id" placeholder="Admin ID">
+        <input type="password" id="admin-password" placeholder="Admin Password">
+
+        <div class="form-btns">
+         <button id="verify-admin-btn">Verify Admin</button> 
+        </div>
+        
+      </div>
+      
+    </div>
+    
+    <div style="display: none;" id="author-signup-auth" class="form-content">
+      <div class="form-head">
+        <h1>Hello Author</h1>
+        <p>Sign up with your credentials to start creating resources</p>  
+      </div>
+      
+      <div class="form-body">
+        <input type="email" id="signup-email" placeholder="Email">
+        <input type="password" id="signup-password" placeholder="Password">
+        
+        <div class="form-btns">
+          <button id="signup-btn">Sign Up</button>
+          <button id="to-login-btn">Log In</button>  
+        </div>
+      </div>
+      
+    </div>
+
+    <div style="display: none;" id="author-login-auth">
+      <div class="form-head">
+        <h1>Hello Author</h1>
+        <p>Login with your credentials to start creating resources</p>  
+      </div>
+      
+      <div class="form-body">
+        <input type="email" id="login-email" placeholder="Email">
+        <input type="password" id="login-password" placeholder="Password">  
+
+        <div class="form-btns">
+          <button id="login-btn">Log In</button>
+          <button id="to-signup-btn">Sign Up</button>
+        </div>
+      </div>
+      
+      
+    </div>
+
+
+    
+</div>
+
+  <script src="https://www.gstatic.com/firebasejs/9.23.0/firebase-app-compat.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/9.23.0/firebase-auth-compat.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/9.23.0/firebase-firestore-compat.js"></script>
+  <script src="../js/firebase.config.js"></script>
+  <script src="../js/auth.js"></script>
+</body>
+</html>

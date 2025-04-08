@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>My Simple Blog</title>
+    <link rel="stylesheet" href="../../css/admin.css">
+    <style>
+        body { font-family: sans-serif; }
+        #auth-section, #blog-section { margin-bottom: 20px; }
+        .blog-post { border: 1px solid #ccc; padding: 10px; margin-bottom: 10px; }
+    </style>
+</head>
+<body class="upload-container">
+    <div class="admin-nav">
+        <img src="../../images/profile-user.png" alt="">
+     <p id="auth-status"></p>
+    <button id="logout-btn">Log Out</button>      
+    </div>
+   
+    <div class="blog-container">
+        <div>
+            <form id="blog-section">
+                <h2>New Blog Post</h2>
+                <input type="text" id="post-title" placeholder="Post Title">
+                <textarea id="post-content" placeholder="Post Content"></textarea>
+                <input type="file" id="post-image" accept="image/*">
+                <img id="image-preview" style="max-width: 100px; margin-top: 10px; display: none;">
+                <button id="create-post-btn" type="button">Create Post</button>
+            </form>
+
+            <div id="blog-posts">
+                <h2>Blog Posts</h2>
+                <!-- Blog posts will be displayed here -->
+            </div>     
+        </div>
+          
+    </div>
+    
+
+    <script src="https://www.gstatic.com/firebasejs/9.23.0/firebase-app-compat.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/9.23.0/firebase-auth-compat.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/9.23.0/firebase-firestore-compat.js"></script>
+    <script src="../js/firebase.config.js"></script>
+    <script src="../js/upload.js"></script>
+</body>
+</html>

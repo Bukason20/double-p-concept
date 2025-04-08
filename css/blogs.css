@@ -1,0 +1,15 @@
+*{
+  margin: 0;
+  padding: 0;
+  overflow-x: hidden;
+  box-sizing: border-box;
+}
+
+#blog-container{
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 2rem;
+}
+.blog-post{
+  background-color: rgb(210, 208, 208);
+}

@@ -1,0 +1,122 @@
+*{
+  margin: 0;
+  padding: 0;
+  overflow-x: hidden;
+  box-sizing: border-box;
+}
+body{
+  background-color: #eae7e7;
+}
+.form-container{
+  background-color: white;
+  width: fit-content;
+  margin: 6rem auto;
+  border-radius: 2rem;
+  /* padding: 3rem; */
+}
+#auth-message{
+  background-color: #0099CC;
+  color: white;
+  padding: 1rem;
+}
+.form-head{
+  background-color: #0099CC;
+  padding: 1rem 2rem;
+  text-align: center;
+  color: white;
+}
+.form-body{
+  padding: 1rem 2rem;
+}
+.form-body input{
+  display: block;
+  width: 100%;
+  margin: 1rem 0;
+  padding: 0.8rem 1rem;
+  border: none;
+  outline: none;
+  border-radius: 5rem;
+  background-color: #ccc;
+  color: black;
+}
+.form-btns{
+  display: flex;
+  width: 100%;
+  gap: 1rem;
+  align-items: center;
+  justify-content: center;
+}
+.form-btns button{
+  width: 100%;
+  border: 1px solid #0099CC;
+  background-color: #0099CC;
+  padding: 0.8rem 1rem;
+  color: white;
+  border-radius: 4rem;
+  margin-top: 2rem;
+  cursor: pointer;
+}
+.form-btns button:nth-child(2){
+  background-color: white;
+  border: 1px solid #0099CC;
+  color: #0099CC;
+}
+
+
+/* ----------------------------------------UPLOAD HTML-------------------------------------------------------- */
+.upload-container{
+  display: flex;
+}
+.admin-nav{
+  background-color: #0099CC;
+  width: fit-content;
+  position: relative;
+  /* position: absolute;
+  left: 0%;
+  height: 100%; */
+  width: 15%;
+}
+.admin-nav img{
+  height: 3rem;
+  margin: 2rem auto 0;
+  display: block;
+}
+#auth-status{
+  font-size: 0.8rem;
+  color: white;
+}
+#logout-btn{
+  position: absolute;
+  top: 90vh;
+  width: fit-content;
+  margin: 1rem auto;
+  display: block;
+  left: 50%;
+  transform: translateX(-50%);
+  padding: 0.6rem 1rem;
+  border-radius: 2rem;
+  border: none;
+  outline: none;
+  color: white;
+  background-color: red;
+}
+
+.blog-container{
+  margin-left: 10%;
+  padding: 1rem 2rem;
+  width: 70%;
+  overflow-y: scroll;
+  height: 100vh;
+}
+.blog-container > div{
+  overflow-y:hidden;
+}
+#blog-section input, #blog-section textarea{
+  display: block;
+  margin: 2rem 0;
+  width: 60%;
+  padding: 2rem;
+}
+#blog-section input[type=file]{
+  padding: 0;
+}
