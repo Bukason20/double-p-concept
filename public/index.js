@@ -1,7 +1,7 @@
 // ---------------------------------AUTO TYPING-----------------------------------------
 document.addEventListener("DOMContentLoaded", function() {
   var typed = new Typed(".auto-type", {
-    strings: ["Are A Tech Agency", "Build Web Apps", "Build Websites", "Build Mobile Apps", "Create Designs"],
+    strings: ["Are A Tech Agency", "Build Web Apps", "Build Websites", "Build Mobile Apps", "Create Designs", "Teach ICT Skills"],
     typeSpeed: 150,
     backSpeed: 150,
     loop: true

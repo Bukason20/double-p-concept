@@ -4,12 +4,40 @@
   overflow-x: hidden;
   box-sizing: border-box;
 }
-
+body{
+  font-family: "Raleway", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol";
+}
+.blogs-wrapper{
+  /* background-color: #ccc; */
+  min-height: 100vh;
+  margin-top: 3rem;
+}
 #blog-container{
   display: grid;
   grid-template-columns: repeat(3, 1fr);
   gap: 2rem;
+  padding: 3rem;
+
 }
 .blog-post{
-  background-color: rgb(210, 208, 208);
+  background-color: whitesmoke;
+  border-radius: 2rem;
+}
+.blog-post img{
+  width: 100%;
+  height: 15rem;
+  object-fit: cover;
+  object-position: center;
+}
+.blog-content{
+  padding: 1rem;
+}
+.blog-content p:nth-child(2n){
+  color: rgb(135, 134, 134);
+  font-size: 0.8rem;
+  margin: 0.5rem 0;
+}
+.blog-content p:nth-child(3n){
+  color: rgb(135, 134, 134);
+  font-size: 1.5rem;
 }

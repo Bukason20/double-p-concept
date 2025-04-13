@@ -3,7 +3,7 @@ const authStatus = document.getElementById('auth-status');
 const postTitleInput = document.getElementById('post-title');
 const postContentInput = document.getElementById('post-content');
 const postImageInput = document.getElementById('post-image');
-const imagePreview = document.getElementById('image-preview')
+// const imagePreview = document.getElementById('image-preview')
 const createPostBtn = document.getElementById('create-post-btn');
 const blogPostsDiv = document.getElementById('blog-posts');
 const blogSection = document.getElementById('blog-section');
@@ -52,22 +52,59 @@ document.addEventListener("DOMContentLoaded", () => {
   });
 });
 
-postImageInput.addEventListener('change', (event) => {
+// postImageInput.addEventListener('change', (event) => {
+//   const file = event.target.files[0];
+
+//   if (file) {
+//     const reader = new FileReader();
+    
+//     reader.onloadend = () => {
+//       const base64Image = reader.result;
+//       imagePreview.src = base64Image;
+//       imagePreview.style.display = 'block';  // Show the image preview
+//     };
+
+//     reader.readAsDataURL(file);
+//   }
+// });
+
+const postMediaInput = document.getElementById('post-media');
+const imagePreview = document.getElementById('image-preview');
+const videoPreview = document.getElementById('video-preview');
+
+let base64Image = '';
+let base64Video = '';
+
+postMediaInput.addEventListener('change', (event) => {
   const file = event.target.files[0];
 
-  if (file) {
-    const reader = new FileReader();
-    
-    reader.onloadend = () => {
-      const base64Image = reader.result;
+  if (!file) return;
+
+  const reader = new FileReader();
+
+  reader.onloadend = () => {
+    const base64 = reader.result;
+    const fileType = file.type;
+
+    // Reset previews
+    imagePreview.style.display = 'none';
+    videoPreview.style.display = 'none';
+    base64Image = '';
+    base64Video = '';
+
+    if (fileType.startsWith('image/')) {
+      base64Image = base64;
       imagePreview.src = base64Image;
-      imagePreview.style.display = 'block';  // Show the image preview
-    };
+      imagePreview.style.display = 'block';
+    } else if (fileType.startsWith('video/')) {
+      base64Video = base64;
+      videoPreview.src = base64Video;
+      videoPreview.style.display = 'block';
+    }
+  };
 
-    reader.readAsDataURL(file);
-  }
+  reader.readAsDataURL(file);
 });
-
 
 createPostBtn.addEventListener('click', async (event) => {
   event.preventDefault();
@@ -89,7 +126,8 @@ createPostBtn.addEventListener('click', async (event) => {
         content,
         author: user.email,
         createdAt: firebase.firestore.FieldValue.serverTimestamp(),
-        image: image || null  // Store the image base64 string in Firestore
+        image: base64Image || null,
+        video: base64Video || null
       };
 
       await db.collection('posts').add(postData);
@@ -121,12 +159,19 @@ async function loadBlogPosts() {
 
       // Display the image if it exists
       const imageHTML = post.image ? `<img src="${post.image}" style="max-width: 100px; margin-bottom: 10px;">` : '';
+      const videoHTML = post.video ? `
+        <video controls style="max-width: 200px; margin-top: 10px;">
+          <source src="${post.video}" type="video/mp4">
+          Your browser does not support the video tag.
+        </video>` : '';
+      // const imageHTML = `<img src="${post.image ? post.image : "../../images/img-file.png"}" style="max-width: 100px; margin-bottom: 10px;">` ;
 
       postDiv.innerHTML = `
         <h3>${post.title}</h3>
         <p>By: ${post.author}</p>
         <p>${post.content}</p>
         ${imageHTML}
+        ${videoHTML}
       `;
 
       blogPostsDiv.appendChild(postDiv);
