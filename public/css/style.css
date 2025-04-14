@@ -383,12 +383,25 @@ a > code {
   margin-right: auto;
   margin-left: auto;
 }
+
+/* -----------------------------------------------------------HERO SECTION---------------------------------------------------- */
+
 .auto-type{
   color: #003366;
 }
 .logo{
   color: white;
 }
+.nav-btn{
+  color: #0099CC;
+}
+.nav-btn:hover{
+  background-color: #0099CC;
+  color: white;
+  transform: scale(1.1);
+  transition: all 500ms ease;
+}
+
 /* ---------------------------------------------------------------------------TEAM SECTION---------------------------------------------------------- */
 .team img{
   height: 400px;
