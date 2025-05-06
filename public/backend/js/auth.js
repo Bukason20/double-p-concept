@@ -66,7 +66,7 @@ signupBtn?.addEventListener("click", async () => {
       const newAdminEmail = userCredential.user.email;
 
       // Automatically make this user an admin in Firestore
-      await db.collection("admins").doc(newAdminEmail).set({ role: "admin" });
+      // await db.collection("admins").doc(newAdminEmail).set({ role: "admin" });
 
       authMessageFunc("Sign Up successful & user added as admin.");
       // authMessageFunc("Sign Up successful");
@@ -83,7 +83,7 @@ loginBtn?.addEventListener("click", async () => {
     await auth.signInWithEmailAndPassword(loginEmail.value, loginPassword.value);
     authMessageFunc("Login Successful");
     setTimeout(() => {
-      window.location.href = "/backend/admin/upload.html";
+      window.location.href = "/public/backend/admin/upload.html";
     }, 2000);
   } catch (error) {
     authMessageFunc(`Login error: ${error.message}`);

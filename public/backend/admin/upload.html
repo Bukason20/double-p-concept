@@ -35,6 +35,15 @@
         </div>
           
     </div>
+
+    <div id="edit-modal" style="display: none; position: fixed; top: 20%; left: 50%; transform: translateX(-50%);
+                             background: white; padding: 20px; border: 1px solid #ccc; z-index: 1000;">
+  <h3>Edit Post</h3>
+  <input type="text" id="edit-title" placeholder="Edit Title" style="width: 100%; margin-bottom: 10px;">
+  <textarea id="edit-content" placeholder="Edit Content" style="width: 100%; height: 100px;"></textarea><br>
+  <button id="save-edit-btn">Save</button>
+  <button id="cancel-edit-btn">Cancel</button>
+</div>
     
 
     <script src="https://www.gstatic.com/firebasejs/9.23.0/firebase-app-compat.js"></script>

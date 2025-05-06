@@ -10,18 +10,23 @@ body{
 .form-container{
   background-color: white;
   width: fit-content;
+  min-width: 400px;
   margin: 6rem auto;
-  border-radius: 2rem;
+  border-radius: 0.5rem;
   /* padding: 3rem; */
+  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+
 }
 #auth-message{
-  background-color: #0099CC;
-  color: white;
+  /* background-color: transparent; */
+  color: black;
   padding: 1rem;
+  font-size: 0.8rem;
 }
 .form-head{
-  background-color: #0099CC;
-  padding: 1rem 2rem;
+  background: linear-gradient(rgba(0, 153,204, 0.2), rgba(0, 153,204,0.5)), url(../images/gadget.jpg);
+  background-size: cover;
+  padding: 2rem;
   text-align: center;
   color: white;
 }
