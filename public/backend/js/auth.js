@@ -83,7 +83,7 @@ loginBtn?.addEventListener("click", async () => {
     await auth.signInWithEmailAndPassword(loginEmail.value, loginPassword.value);
     authMessageFunc("Login Successful");
     setTimeout(() => {
-      window.location.href = "/public/backend/admin/upload.html";
+      window.location.href = "/backend/admin/upload.html";
     }, 2000);
   } catch (error) {
     authMessageFunc(`Login error: ${error.message}`);
