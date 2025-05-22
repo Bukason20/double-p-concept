@@ -1,7 +1,6 @@
 const logoutBtn = document.getElementById('logout-btn');
 const authStatus = document.getElementById('auth-status');
 const postTitleInput = document.getElementById('post-title');
-const postContentInput = document.getElementById('post-content');
 const createPostBtn = document.getElementById('create-post-btn');
 const blogPostsDiv = document.getElementById('blog-posts');
 const blogSection = document.getElementById('blog-section');
@@ -12,7 +11,6 @@ const videoPreview = document.getElementById('video-preview');
 
 const editModal = document.getElementById('edit-modal');
 const editTitleInput = document.getElementById('edit-title');
-const editContentInput = document.getElementById('edit-content');
 const saveEditBtn = document.getElementById('save-edit-btn');
 const cancelEditBtn = document.getElementById('cancel-edit-btn');
 
@@ -20,21 +18,14 @@ let base64Image = '';
 let base64Video = '';
 let currentEditPostId = null;
 
-logoutBtn.addEventListener('click', async () => {
-  try {
-    await auth.signOut();
-    authStatus.textContent = 'Logged out successfully.';
-    blogSection.style.display = 'none';
-    blogPostsDiv.innerHTML = '';
-    setTimeout(() => {
-      window.location.href = "/public/backend/admin/auth.html";
-    }, 2000);
-  } catch (error) {
-    authStatus.textContent = 'Error: ' + error.message;
-  }
-});
+let quill;
+let editQuill;
 
 document.addEventListener("DOMContentLoaded", () => {
+  // Initialize Quill editors
+  quill = new Quill('#editor', { theme: 'snow' });
+  editQuill = new Quill('#edit-editor', { theme: 'snow' });
+
   auth.onAuthStateChanged(async (user) => {
     if (user) {
       authStatus.textContent = user.email;
@@ -48,6 +39,20 @@ document.addEventListener("DOMContentLoaded", () => {
       blogPostsDiv.innerHTML = '';
     }
   });
+});
+
+logoutBtn.addEventListener('click', async () => {
+  try {
+    await auth.signOut();
+    authStatus.textContent = 'Logged out successfully.';
+    blogSection.style.display = 'none';
+    blogPostsDiv.innerHTML = '';
+    setTimeout(() => {
+      window.location.href = "/public/backend/admin/auth.html";
+    }, 2000);
+  } catch (error) {
+    authStatus.textContent = 'Error: ' + error.message;
+  }
 });
 
 postMediaInput.addEventListener('change', (event) => {
@@ -83,7 +88,7 @@ createPostBtn.addEventListener('click', async (event) => {
   event.preventDefault();
 
   const title = postTitleInput.value.trim();
-  const content = postContentInput.value.trim();
+  const content = quill.root.innerHTML.trim();
   const user = auth.currentUser;
 
   if (!title || !content) {
@@ -105,7 +110,7 @@ createPostBtn.addEventListener('click', async (event) => {
       await db.collection('posts').add(postData);
 
       postTitleInput.value = '';
-      postContentInput.value = '';
+      quill.root.innerHTML = '';
       imagePreview.style.display = 'none';
       videoPreview.style.display = 'none';
       postMediaInput.value = '';
@@ -143,7 +148,7 @@ async function loadBlogPosts() {
       let buttonsHTML = '';
       if (user && user.email === post.author) {
         buttonsHTML = `
-          <button onclick="editPost('${postId}', \`${post.title}\`, \`${post.content}\`)">Edit</button>
+          <button onclick="editPost('${postId}', \`${post.title}\`, \`${post.content.replace(/`/g, '\\`')}\`)">Edit</button>
           <button onclick="deletePost('${postId}')">Delete</button>
         `;
       }
@@ -151,7 +156,7 @@ async function loadBlogPosts() {
       postDiv.innerHTML = `
         <h3>${post.title}</h3>
         <p>By: ${post.author}</p>
-        <p>${post.content}</p>
+        <div>${post.content}</div>
         ${imageHTML}
         ${videoHTML}
         ${buttonsHTML}
@@ -168,7 +173,7 @@ async function loadBlogPosts() {
 window.editPost = function(postId, title, content) {
   currentEditPostId = postId;
   editTitleInput.value = title;
-  editContentInput.value = content;
+  editQuill.root.innerHTML = content;
   editModal.style.display = 'block';
 };
 
@@ -186,7 +191,7 @@ window.deletePost = async function(postId) {
 
 saveEditBtn.addEventListener('click', async () => {
   const newTitle = editTitleInput.value.trim();
-  const newContent = editContentInput.value.trim();
+  const newContent = editQuill.root.innerHTML.trim();
 
   if (!newTitle || !newContent) {
     alert("Please enter both title and content.");
