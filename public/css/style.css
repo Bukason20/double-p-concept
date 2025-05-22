@@ -461,6 +461,13 @@ a > code {
 .blog-post .contents{
   padding: 1rem;
 }
+@media screen and (max-width: 500px){
+  #blog-container{
+    grid-template-columns: repeat(1, 1fr);
+    background-color: red;
+    display:  block;
+}
+}
 .contact{
   background-color: #0099CC;
 }
