@@ -14,7 +14,7 @@ document.addEventListener("DOMContentLoaded", function () {
   var swiper = new Swiper(".mySwiper", {
     loop: true,
     spaceBetween: 30,
-    centeredSlides: true,
+    // centeredSlides: true,
     autoplay: {
       delay: 3000,
       disableOnInteraction: false,
@@ -33,60 +33,44 @@ document.addEventListener("DOMContentLoaded", function () {
 // --------------------------------------------------------------BLOG POSTS--------------------------------------------------------------------
 
 
-document.addEventListener("DOMContentLoaded", function () {
-  const blogListContainer = document.getElementById("blogList");
-  const blogDetailsContainer = document.getElementById("blogDetails");
+window.addEventListener('DOMContentLoaded', async () => {
+  const container = document.getElementById('blog-container');
+  container.innerHTML = '';
 
-  if (blogListContainer) {
-      renderBlogList();
-  }
+  try {
+    const snapshot = await db.collection('posts').orderBy('createdAt', 'desc').get();
+    snapshot.forEach(doc => {
+      const post = doc.data();
+      const postId = doc.id;
 
-  if (blogDetailsContainer) {
-      renderBlogDetails();
+      let date = '';
+      if (post.createdAt?.toDate) {
+        date = post.createdAt.toDate().toLocaleDateString('en-US', {
+          year: 'numeric', month: 'short', day: 'numeric'
+        });
+      }
+
+      const image = post.image ? `<img src="${post.image}" style="max-width:100%;"><br>` : '';
+      const video = post.video ? `<video controls style="max-width:100%"><source src="${post.video}" type="video/mp4"></video>` : '';
+
+      const postDiv = document.createElement('div');
+      postDiv.className = 'blog-post';
+      postDiv.innerHTML = `
+        <a href="blog-detail.html?id=${postId}" style="text-decoration:none; color:inherit;">
+          ${image}
+          ${video}
+          <div class="contents">
+            <h2>${post.title}</h2>
+            <p class="author"><strong>${post.author}</strong> - ${date}</p>
+            <p class="content">${post.content.substring(0, 100)}...</p>
+          </div>
+        </a>
+      `;
+
+      container.appendChild(postDiv);
+    });
+  } catch (error) {
+    console.error("Error loading posts:", error);
   }
 });
-// Function to display the blog posts
 
-// Function to display blog list
-function renderBlogList() {
-  const blogContainer = document.getElementById("blogList");
-  // blogContainer.innerHTML = "";
-
-  blogContainer.innerHTML = blogs.map(blog => `
-    <div class="blog-card col-lg-4">
-      <img src="${blog.picture}" alt="${blog.title}">
-      <h3>${blog.title}</h3>
-      <p><strong>${blog.author}</strong> - ${blog.date}</p>
-      <p>${blog.body.substring(0, 100)}...</p>
-      <a href="blogDetails.html?link=${blog.link}">Read More</a>
-    </div>
-  `).join("");
-
-}
-
-// Function to display blog details
-function renderBlogDetails() {
-  const urlParams = new URLSearchParams(window.location.search);
-  const blogLink = urlParams.get("link");
-
-  if (!blogLink) {
-      document.getElementById("blogDetails").innerHTML = "<p>Blog not found!</p>";
-      return;
-  }
-
-  const blog = blogs.find(b => b.link === blogLink);
-
-  if (!blog) {
-      document.getElementById("blogDetails").innerHTML = "<p>Blog not found!</p>";
-      return;
-  }
-
-  document.getElementById("blogDetails").innerHTML = `
-      <h1>${blog.title}</h1>
-      <p><strong>By ${blog.author}</strong></p>
-      <img src="${blog.picture}" alt="Blog Image" width="400">
-      <p>${blog.body}</p>
-      <p><small>Published on: ${blog.date}</small></p>
-      <a href="index.html">Back to Blogs</a>
-  `;
-}

@@ -422,7 +422,12 @@ a > code {
   object-fit: cover;
   object-position: center;
 }
-
+.swiper-wrapper{
+ width: 400%;
+}
+.Swiper{
+  background-color: green;
+}
 /* -------------------------------------------------------------------RESOURCE SECTION------------------------------------------------------------------ */
 .resources{
   background-color: #F5F5F5;
@@ -433,6 +438,29 @@ a > code {
   height: 250px;
 }
 
+#blog-container{
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 2rem;
+}
+.blog-post{
+  background-color: white;
+}
+.blog-post img{
+  width: 100%;
+  /* height: 0rem; */
+  aspect-ratio: 1/1;
+  object-fit: cover;
+}
+.blog-post h2{
+  font-size: 1.5rem;
+}
+.blog-post .author{
+  font-size: 0.8rem;
+}
+.blog-post .contents{
+  padding: 1rem;
+}
 .contact{
   background-color: #0099CC;
 }

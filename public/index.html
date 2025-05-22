@@ -285,9 +285,12 @@
   <div class="section resources">
     <div class="container">
       <h2>Resources</h2>
-      <div class="blog-cont row" id="blogList">
-        <!-- <div cla></div> -->
-      </div>  
+      <div class="blogs-wrapper">
+        <div id="blog-container">
+        
+        </div>
+        <a href="/public/blogs.html" id="blog-more">Read More</a>
+      </div> 
     </div>
     
   </div>
@@ -389,11 +392,17 @@
 
 <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
 
-<script src="./index.js"></script>
 <script src="./blogs.js"></script>
+
 
 <!-- <script defer src="https://static.cloudflareinsights.com/beacon.min.js/vcd15cbe7772f49c399c6a5babf22c1241717689176015" integrity="sha512-ZpsOmlRQV6y907TI0dKBHq9Md29nnaEIPlkf84rnaERnq6zvWvPUqr2ft8M1aS28oN72PdrCzSjY4U6VaAw1EQ==" data-cf-beacon='{"rayId":"9261eb423c076936","serverTiming":{"name":{"cfExtPri":true,"cfL4":true,"cfSpeedBrain":true,"cfCacheStatus":true}},"version":"2025.3.0","token":"cd0b4b3a733644fc843ef0b185f98241"}' crossorigin="anonymous"></script> -->
 <script defer src="https://unpkg.com/typed.js@2.1.0/dist/typed.umd.js"></script>
+<script src="https://www.gstatic.com/firebasejs/9.23.0/firebase-app-compat.js"></script>
+<script src="https://www.gstatic.com/firebasejs/9.23.0/firebase-auth-compat.js"></script>
+<script src="https://www.gstatic.com/firebasejs/9.23.0/firebase-firestore-compat.js"></script>
+<script src="./backend/js/firebase.config.js"></script>
+<script src="./index.js"></script>
 </body>
+
 
 </html>

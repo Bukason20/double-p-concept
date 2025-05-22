@@ -1,52 +1,39 @@
-async function loadBlogPosts() {
-  //   blogPostsDiv.innerHTML = ''; // Clear existing posts
-  
+window.addEventListener('DOMContentLoaded', async () => {
+  const container = document.getElementById('blog-container');
+  container.innerHTML = '';
+
   try {
     const snapshot = await db.collection('posts').orderBy('createdAt', 'desc').get();
     snapshot.forEach(doc => {
       const post = doc.data();
-      const postDiv = document.createElement('div');
-      postDiv.classList.add('blog-post');
-      
-      // Convert Firestore timestamp to readable date
-      let publishDate = '';
-      if (post.createdAt && post.createdAt.toDate) {
-        const date = post.createdAt.toDate();
-        publishDate = date.toLocaleDateString('en-US', {
-          year: 'numeric',
-          month: 'short',
-          day: 'numeric'
+      const postId = doc.id;
+
+      let date = '';
+      if (post.createdAt?.toDate) {
+        date = post.createdAt.toDate().toLocaleDateString('en-US', {
+          year: 'numeric', month: 'short', day: 'numeric'
         });
       }
 
-      // Display the image if it exists
-      const imageHTML = post.image ? `<img src="${post.image}" style="margin-bottom: 10px;">` : '';
-      // const imageHTML = `<img src="${post.image ? post.image : "images/img-file.png"}">` ;
-      const videoHTML = post.video ? `
-        <video controls style="max-width: 200px; margin-top: 10px;">
-          <source src="${post.video}" type="video/mp4">
-          Your browser does not support the video tag.
-        </video>` : '';
+      const image = post.image ? `<img src="${post.image}" style="max-width:100%;"><br>` : '';
+      const video = post.video ? `<video controls style="max-width:100%"><source src="${post.video}" type="video/mp4"></video>` : '';
 
-
+      const postDiv = document.createElement('div');
+      postDiv.className = 'blog-post';
       postDiv.innerHTML = `
-        ${imageHTML}
-        ${videoHTML}
-        <div class="blog-content">
-          <h1>${post.title}</h1>
-          <p> <strong>${post.author}</strong> - ${publishDate}</p>
-          <p>${post.content}</p>
-        </div>
-        
-        
+        <a href="blog-detail.html?id=${postId}" style="text-decoration:none; color:inherit;">
+          ${image}
+          ${video}
+          <h2>${post.title}</h2>
+          <p><strong>${post.author}</strong> - ${date}</p>
+          <p>${post.content.substring(0, 100)}...</p>
+        </a>
+        <hr/>
       `;
-                                 
-        document.getElementById("blog-container").appendChild(postDiv);
-        });
-    } catch (error) {
-        console.error("Error loading posts: ", error);
-        alert('Error loading posts: ' + error.message);
-    }
-  }
 
-  loadBlogPosts()
+      container.appendChild(postDiv);
+    });
+  } catch (error) {
+    console.error("Error loading posts:", error);
+  }
+});
