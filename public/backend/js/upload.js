@@ -48,7 +48,7 @@ logoutBtn.addEventListener('click', async () => {
     blogSection.style.display = 'none';
     blogPostsDiv.innerHTML = '';
     setTimeout(() => {
-      window.location.href = "/public/backend/admin/auth.html";
+      window.location.href = "/backend/admin/auth.html";
     }, 2000);
   } catch (error) {
     authStatus.textContent = 'Error: ' + error.message;
